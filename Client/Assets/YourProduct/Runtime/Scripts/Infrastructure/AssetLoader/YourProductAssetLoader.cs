@@ -27,7 +27,7 @@ namespace YourProduct.Infrastructure.AssetLoader
             this.fontService = fontService;
         }
 
-        async UniTask<TScreenStack> IScreenStackInstanceFactory.CreateScreenStackInstance<TScreenStack>(string screenStackAddress, CancellationToken ct)
+        async UniTask<TScreenStack> IScreenStackInstanceFactory.CreateScreenStackInstance<TScreenStack>(string screenStackAddress, IScreenStackData data, CancellationToken ct)
         {
             var request = Resources.LoadAsync<GameObject>(screenStackAddress);
             await request.ToUniTask(cancellationToken: ct);
